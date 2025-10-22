@@ -1,245 +1,96 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Biqalawa_dz — الصفحة الرسمية</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biqalawa DZ</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #1a002b, #0a0014);
+      color: white;
+      text-align: center;
+    }
 
-<!-- Cairo font -->
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    header {
+      padding: 40px 20px;
+    }
 
-<style>
-  :root{
-    --bg1:#0a0014;
-    --accent:#9b4dff;
-    --accent2:#ff5a8a;
-    --card-bg: rgba(0,0,0,0.45);
-  }
-  html,body{height:100%;margin:0;font-family:"Cairo",sans-serif;background:radial-gradient(circle at 10% 10%, rgba(155,77,255,0.08), transparent 10%), linear-gradient(180deg,#0b0016,#07000b); color:#fff; -webkit-font-smoothing:antialiased;}
-  /* full neon glow background */
-  .neon-bg{
-    position:fixed;inset:0;z-index:0;pointer-events:none;
-    background:
-      radial-gradient(600px 400px at 50% 20%, rgba(155,77,255,0.06), transparent 20%),
-      radial-gradient(400px 300px at 20% 70%, rgba(0,120,255,0.03), transparent 10%);
-    filter:blur(12px);
-    mix-blend-mode:screen;
-  }
+    img.logo {
+      width: 200px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px #a020f0;
+    }
 
-  /* loading splash */
-  #splash{
-    position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:9999;background:linear-gradient(180deg,rgba(4,0,10,0.95),rgba(8,0,15,0.9));
-    flex-direction:column;gap:18px;
-  }
-  .spinner{
-    width:90px;height:90px;border-radius:50%;background:conic-gradient(var(--accent), var(--accent2), transparent);filter:drop-shadow(0 0 20px rgba(155,77,255,0.4));
-    animation:spin 2.6s linear infinite;
-  }
-  @keyframes spin{to{transform:rotate(360deg)}}
+    h1 {
+      font-size: 2.2em;
+      margin-top: 15px;
+      color: #c770ff;
+      text-shadow: 0 0 10px #a020f0;
+    }
 
-  /* main card */
-  .wrap{position:relative;z-index:2;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:60px 16px 120px;}
-  .card{
-    width:360px;max-width:92vw;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.25));
-    border-radius:20px;padding:26px;border:1px solid rgba(155,77,255,0.18);box-shadow:0 8px 40px rgba(0,0,0,0.6);
-    backdrop-filter: blur(8px);
-    text-align:center;
-  }
+    .tiktok-link {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 25px;
+      background: linear-gradient(90deg, #a020f0, #ff00aa);
+      color: white;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 15px #a020f0;
+      transition: transform 0.3s;
+    }
 
-  .logo-wrap{position:relative;margin-top:-90px;margin-bottom:8px;}
-  .logo{
-    width:170px;height:170px;border-radius:20px;object-fit:cover;border:6px solid rgba(0,0,0,0.6);box-shadow:0 15px 40px rgba(155,77,255,0.25), inset 0 0 40px rgba(155,77,255,0.12);
-    transform:translateY(-8px);
-  }
-  .logo-glow{
-    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:220px;height:220px;border-radius:28px;filter:blur(28px);
-    background:radial-gradient(circle at 30% 30%, rgba(155,77,255,0.6), transparent 30%), radial-gradient(circle at 70% 70%, rgba(0,200,255,0.15), transparent 20%);
-    z-index:-1;
-  }
+    .tiktok-link:hover {
+      transform: scale(1.1);
+    }
 
-  h1{margin:8px 0 6px;color:#ff8b6b;font-size:28px;text-shadow:0 6px 20px rgba(255,107,107,0.08);letter-spacing:1px}
-  p.desc{color:#e6dff6;margin:6px 0 18px;font-size:15px}
+    /* دردشة */
+    .chat-box {
+      width: 90%;
+      max-width: 600px;
+      height: 500px;
+      margin: 40px auto;
+      border: 2px solid #a020f0;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 20px #a020f0;
+    }
 
-  .btn{display:inline-block;padding:10px 22px;border-radius:28px;background:linear-gradient(90deg,var(--accent2),var(--accent));color:white;text-decoration:none;font-weight:700;box-shadow:0 10px 30px rgba(155,77,255,0.18);transition:transform .18s}
-  .btn:hover{transform:translateY(-4px)}
-  .btn.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);box-shadow:none;color:#fff;padding:8px 18px}
-
-  /* chat box */
-  .chat{
-    margin-top:18px;background:linear-gradient(180deg, rgba(10,5,20,0.6), rgba(8,3,18,0.55));border-radius:14px;padding:10px;border:1px solid rgba(155,77,255,0.08);
-    box-shadow:0 10px 40px rgba(0,0,0,0.6);
-  }
-  .messages{max-height:260px;overflow:auto;padding:8px;display:flex;flex-direction:column;gap:8px}
-  .msg{align-self:flex-end;max-width:85%;padding:10px 12px;border-radius:12px;background:linear-gradient(180deg, rgba(155,77,255,0.14), rgba(155,77,255,0.08));box-shadow:0 6px 14px rgba(155,77,255,0.04);color:#fff;font-size:14px}
-  .msg.other{align-self:flex-start;background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.28));border:1px solid rgba(255,255,255,0.02)}
-  .msg .time{display:block;opacity:0.6;font-size:11px;margin-top:6px;text-align:left}
-
-  .chat-controls{display:flex;gap:8px;margin-top:10px}
-  .chat-input{flex:1;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);background:rgba(0,0,0,0.35);color:#fff;}
-  .send-btn{padding:10px 12px;border-radius:12px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;border:none;font-weight:700}
-
-  footer{position:fixed;bottom:8px;left:0;right:0;text-align:center;color:#bdb3d8;font-size:13px;z-index:2}
-  /* responsive */
-  @media (max-width:420px){
-    .card{width:92%}
-    .logo{width:150px;height:150px}
-  }
-</style>
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #aaa;
+    }
+  </style>
 </head>
 <body>
 
-<div class="neon-bg"></div>
+  <header>
+    <img src="YOUR_LOGO_URL_HERE" alt="Biqalawa DZ Logo" class="logo" />
+    <h1>Biqalawa DZ</h1>
+    <p>🎮 صانعة محتوى ألعاب فري فاير 💜</p>
+    <a class="tiktok-link" href="https://www.tiktok.com/@biqalawa_dz" target="_blank">
+      تابعوني على تيك توك 🎵
+    </a>
+  </header>
 
-<!-- Splash screen -->
-<div id="splash">
-  <div class="spinner"></div>
-  <div style="text-align:center">
-    <div style="font-weight:700;font-size:18px;margin-bottom:6px">Biqalawa_dz</div>
-    <div style="opacity:0.8">جارٍ تحميل التصميم الفاخر…</div>
+  <!-- موسيقى تلقائية -->
+  <audio autoplay loop>
+    <source src="YOUR_MUSIC_URL_HERE.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- دردشة عامة (Chatango) -->
+  <div class="chat-box">
+    <iframe 
+      src="https://chatango.com/iframe/biqalawa_dz" 
+      style="width:100%; height:100%; border:none;">
+    </iframe>
   </div>
-</div>
 
-<div class="wrap">
-  <div class="card" role="main">
-    <div class="logo-wrap">
-      <div class="logo-glow"></div>
-      <!-- Logo image from your GitHub repo (raw) -->
-      <img id="siteLogo" class="logo" src="https://raw.githubusercontent.com/belamrikatya6/biqalawa_music/main/logo.jpg" alt="Biqalawa logo">
-    </div>
-
-    <h1>biqalawa_dz</h1>
-    <p class="desc">صانعة محتوى ألعاب — محتوى ترفيهي ⚡ تابعوني على تيك توك 👇</p>
-
-    <a class="btn" href="https://www.tiktok.com/@biqalawa_dz?_t=ZS-90k8RqhtpP0&_r=1" target="_blank" rel="noopener">تابعوني على تيك توك</a>
-
-    <!-- Chat -->
-    <div class="chat" aria-live="polite">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin:8px 6px">
-        <strong>دردشة الزوار (عامة)</strong>
-        <span style="font-size:12px;opacity:0.7">مرئي لكل الزوار</span>
-      </div>
-
-      <div id="messages" class="messages" aria-label="قائمة الرسائل"></div>
-
-      <div class="chat-controls">
-        <input id="msgInput" class="chat-input" placeholder="اكتب رسالة..." aria-label="اكتب رسالة">
-        <button id="sendBtn" class="send-btn">إرسال</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<footer>© biqalawa_dz 2025 · تم الإنشاء بواسطة الأدوات المجانية</footer>
-
-<!-- Audio (موسيقى) -->
-<audio id="bgAudio" loop playsinline>
-  <source src="https://raw.githubusercontent.com/belamrikatya6/biqalawa_music/main/music.mp3" type="audio/mpeg">
-</audio>
-
-<!-- Firebase + Firestore (النسخة المعيارية عبر ES modules) -->
-<script type="module">
-  // === Firebase config: استخدمت إعدادات المشروع التي أعطيتَها سابقاً ===
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-  import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp, limit } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyBf74thAqGYnuCw5WK4yR7UIkaJyJVsrfU",
-    authDomain: "biqalawa-36a05.firebaseapp.com",
-    projectId: "biqalawa-36a05",
-    storageBucket: "biqalawa-36a05.firebasestorage.app",
-    messagingSenderId: "320644743211",
-    appId: "1:320644743211:web:a585f4e38e593748eeea6e",
-    measurementId: "G-H3PKM74KK7"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  // عناصر الواجهة
-  const splash = document.getElementById('splash');
-  const audio = document.getElementById('bgAudio');
-  const messagesEl = document.getElementById('messages');
-  const input = document.getElementById('msgInput');
-  const sendBtn = document.getElementById('sendBtn');
-
-  // محاولة تشغيل الصوت ذكيًا:
-  // 1) نبدأ بالموسيقى مكتومة (بعض المتصفحات تسمح بالتشغيل إذا كانت muted)
-  // 2) إذا نجحت، نرفع الصوت بعد تفاعل المستخدم الأول
-  audio.muted = true;
-  audio.volume = 0.25;
-  audio.play().catch(()=>{ /* متصفح منع التشغيل */ });
-
-  const enableSoundOnInteraction = () => {
-    audio.muted = false;
-    audio.volume = 0.45; // مستوى متوسط
-    audio.play().catch(()=>{});
-    // نشيل الاستماع بعد أول تفاعل
-    window.removeEventListener('click', enableSoundOnInteraction);
-    window.removeEventListener('touchstart', enableSoundOnInteraction);
-  };
-  window.addEventListener('click', enableSoundOnInteraction, { once:true });
-  window.addEventListener('touchstart', enableSoundOnInteraction, { once:true });
-
-  // إخفاء شاشة التحميل بعد تحميل الصفحة / 800ms
-  window.addEventListener('load', () => {
-    setTimeout(()=>{ splash.style.display='none'; }, 800);
-  });
-
-  // ---------- الدردشة الحية (Firestore) ----------
-  // collection name
-  const col = collection(db, 'public_chat');
-
-  // إظهار آخر 100 رسالة (مرتبة زمنياً)
-  const q = query(col, orderBy('createdAt'), limit(100));
-
-  // استمع للتحديثات الحية
-  onSnapshot(q, snapshot => {
-    messagesEl.innerHTML = ''; // ننظف القايمة ثم نعرض
-    snapshot.forEach(doc => {
-      const data = doc.data();
-      const isMe = false; // كل الرسائل تعرض كـ other أو you - هنا لا يوجد تسجيل دخول
-      const msg = document.createElement('div');
-      msg.className = 'msg ' + (isMe? 'me' : 'other');
-      // نص مع المرسل والتوقيت
-      const sender = data.name ? data.name : 'زائر';
-      const text = (data.text||'').replace(/</g,'&lt;');
-      msg.innerHTML = `<strong style="display:block;margin-bottom:6px;font-size:13px">${sender}</strong>
-                       <div>${text}</div>
-                       <span class="time">${data.createdAt && data.createdAt.toDate ? data.createdAt.toDate().toLocaleString() : ''}</span>`;
-      messagesEl.appendChild(msg);
-    });
-    // تمرير لأسفل
-    messagesEl.scrollTop = messagesEl.scrollHeight;
-  }, err => {
-    console.error('Firestore listen error:', err);
-    const warn = document.createElement('div');
-    warn.style.opacity = '0.7';
-    warn.style.fontSize = '13px';
-    warn.style.padding = '8px';
-    warn.innerText = 'تعذر تحميل الدردشة — تأكد من إعداد Firestore في Firebase.';
-    messagesEl.appendChild(warn);
-  });
-
-  // إرسال رسالة إلى Firestore
-  async function sendMessage(){
-    const text = input.value.trim();
-    if(!text) return;
-    // اسم مرسل افتراضي — يمكن تغييره لاحقاً
-    const name = 'زائر';
-    try{
-      await addDoc(col, { text, name, createdAt: serverTimestamp() });
-      input.value = '';
-    }catch(e){
-      console.error('send error', e);
-      alert('تعذّر إرسال الرسالة. تأكدي من إعدادات Firebase (قواعد القراءة/الكتابة).');
-    }
-  }
-
-  sendBtn.addEventListener('click', sendMessage);
-  input.addEventListener('keydown', (e) => { if(e.key === 'Enter') sendMessage(); });
-
-</script>
+  <footer>© 2025 Biqalawa DZ 💜 جميع الحقوق محفوظة</footer>
 
 </body>
-      </html>
+</html>
