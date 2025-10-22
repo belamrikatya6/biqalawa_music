@@ -153,5 +153,27 @@
       music.play();
     }, { once: true });
   </script>
+
+<audio id="bg-music" loop playsinline>
+  <source src="https://raw.githubusercontent.com/belamrikatya6/biqalawa_music/main/music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const music = document.getElementById("bg-music");
+
+// نحاول التشغيل فور التحميل
+window.addEventListener("load", () => {
+  const playMusic = () => {
+    music.play().catch(() => {});
+  };
+
+  // تفاعل أول لمتصفحات الهواتف
+  document.body.addEventListener("click", playMusic, { once: true });
+  document.body.addEventListener("touchstart", playMusic, { once: true });
+
+  // محاولة تشغيل تلقائي (تنجح أحيانًا في الكمبيوتر)
+  playMusic();
+});
+</script>
 </body>
-</html>
+  </html>
