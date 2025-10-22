@@ -148,3 +148,25 @@ style="width: 100%; height: 500px;">
 </script>
 </body>
   </html>
+
+...
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDAbV0tm2pOotc2AmAkDjucL0...",
+    authDomain: "biqalawa-9aa3b.firebaseapp.com",
+    projectId: "biqalawa-9aa3b",
+    storageBucket: "biqalawa-9aa3b.appspot.com",
+    messagingSenderId: "379229502967",
+    appId: "1:379229502967:web:ad248fb4a36b4e3a67b5a3",
+    measurementId: "G-F4WBDJ7F4Q"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+
+</body>
+</html>
